@@ -2,11 +2,9 @@ package com.unifacisa.neomed.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.unifacisa.neomed.Avaliacao;
 import com.unifacisa.neomed.Localizacao;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
