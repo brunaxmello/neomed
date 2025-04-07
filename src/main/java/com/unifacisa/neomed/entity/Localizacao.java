@@ -34,5 +34,6 @@ public class Localizacao {
     @OneToOne(mappedBy = "localizacao")
     @JsonBackReference
     @JoinColumn(name = "medico_id") // Relacionamento com Medico
+    @Getter @Setter
     private Medico medico;
 }
