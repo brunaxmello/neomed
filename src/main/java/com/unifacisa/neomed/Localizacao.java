@@ -1,5 +1,7 @@
 package com.unifacisa.neomed;
 
+import com.unifacisa.neomed.entity.Medico;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

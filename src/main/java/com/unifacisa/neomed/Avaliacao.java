@@ -3,6 +3,8 @@ package com.unifacisa.neomed;
 import org.hibernate.annotations.DialectOverride.GeneratedColumns;
 import org.springframework.boot.autoconfigure.web.WebProperties.Resources.Chain.Strategy;
 
+import com.unifacisa.neomed.entity.Medico;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
