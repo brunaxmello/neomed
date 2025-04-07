@@ -18,7 +18,7 @@ import lombok.ToString;
 @Entity
 @AllArgsConstructor
 @ToString
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode
 public class Especializacao {
 
 	@Id
