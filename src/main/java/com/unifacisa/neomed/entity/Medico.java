@@ -11,6 +11,8 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
@@ -39,14 +41,15 @@ public class Medico extends Usuario {
     @JsonManagedReference // Lado gerenciador
     private List<Avaliacao> avaliacoes = new ArrayList<>();
 	
-//	  @Getter @Setter
-//    @ManyToMany
-//    @JoinTable(
-//        name = "medico_especializacao", // Nome da tabela intermediária
-//        joinColumns = @JoinColumn(name = "medico_id"), // FK para Meidco
-//        inverseJoinColumns = @JoinColumn(name = "especializacao_id") // FK para Especializacao
-//    )
-//    @JsonManagedReference // Lado gerenciador
-//    private List<Especializacao> especializacoes = new ArrayList<>();
+	
+	@Getter @Setter
+    @ManyToMany
+    @JoinTable(
+        name = "medico_especializacao", // Nome da tabela intermediária
+        joinColumns = @JoinColumn(name = "medico_id"), // FK para Meidco
+        inverseJoinColumns = @JoinColumn(name = "especializacao_id") // FK para Especializacao
+    )
+    @JsonManagedReference // Lado gerenciador
+    private List<Especializacao> especializacoes = new ArrayList<>();
 	
 }
