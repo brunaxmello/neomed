@@ -1,4 +1,4 @@
-# Plataforma de Busca de Médicos - Back-End
+# Sistema back-end de plataforma de saúde - Neomed
 
 ## Descrição do Projeto
 
