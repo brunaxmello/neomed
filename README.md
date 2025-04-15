@@ -19,4 +19,4 @@ A plataforma de busca de médicos tem como objetivo fornecer uma interface digit
 - **Postman**: Para testes de integração e documentação da API.
 
 ## Licença
-- ** Este projeto é licenciado sob a Licença MIT.
+- **Este projeto é licenciado sob a Licença MIT.
