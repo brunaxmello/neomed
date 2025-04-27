@@ -1,10 +1,4 @@
-package com.unifacisa.neomed;
-
-import org.hibernate.annotations.DialectOverride.GeneratedColumns;
-import org.springframework.boot.autoconfigure.web.WebProperties.Resources.Chain.Strategy;
-
-import com.unifacisa.neomed.entity.Medico;
-import com.unifacisa.neomed.entity.Usuario;
+package com.unifacisa.neomed.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
