@@ -9,25 +9,21 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
-import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.NoArgsConstructor;
+
 
 @Entity
-@AllArgsConstructor
-@ToString
-@EqualsAndHashCode
+@Data @NoArgsConstructor @EqualsAndHashCode
 public class Especializacao {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Getter
+
 	private Long id;
 
-	@Getter
-	@Setter
+
 	private String nome;	
 
 	@ManyToMany(mappedBy = "especializacoes")
