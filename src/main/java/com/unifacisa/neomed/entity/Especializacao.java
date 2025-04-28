@@ -28,10 +28,10 @@ public class Especializacao {
 
 	@Getter
 	@Setter
-	private String nome;
+	private String nome;	
 
 	@ManyToMany(mappedBy = "especializacoes")
 	@JsonBackReference
-	private List<Medico> medicos;
+	private List<ProfissionalDeSaude> profissionalDeSaude;
 
 }
