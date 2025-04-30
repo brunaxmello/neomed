@@ -1,5 +1,6 @@
 package com.unifacisa.neomed.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 public class Medico extends ProfissionalDeSaude {
 
+	@Column(unique = true)
 	private Integer crm;
 
 }
