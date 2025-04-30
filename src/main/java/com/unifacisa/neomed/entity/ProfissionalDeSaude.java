@@ -30,7 +30,7 @@ public class ProfissionalDeSaude extends Usuario {
 	@JsonManagedReference // Lado gerenciador
 	private Localizacao localizacao;
 
-	@OneToMany(mappedBy = "ProfissionalDeSaude", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "profissionalDeSaude", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JsonManagedReference // Lado gerenciador
 	private List<Avaliacao> avaliacoes = new ArrayList<>();
 
