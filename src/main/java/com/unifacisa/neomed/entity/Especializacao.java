@@ -13,9 +13,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-
 @Entity
-@Data @NoArgsConstructor @EqualsAndHashCode
+@Data
+@NoArgsConstructor
+@EqualsAndHashCode
 public class Especializacao {
 
 	@Id
@@ -23,8 +24,7 @@ public class Especializacao {
 
 	private Long id;
 
-
-	private String nome;	
+	private String nome;
 
 	@ManyToMany(mappedBy = "especializacoes")
 	@JsonBackReference

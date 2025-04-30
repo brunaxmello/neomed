@@ -18,27 +18,28 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data @NoArgsConstructor @EqualsAndHashCode(callSuper = true)
+@Data
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 public class ProfissionalDeSaude extends Usuario {
-	
+
 	private double valorConsulta;
-	
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "localizacao", referencedColumnName = "id") // localização é referenciado
-    @JsonManagedReference // Lado gerenciador
-    private Localizacao localizacao;
-	
-    @OneToMany(mappedBy = "ProfissionalDeSaude", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonManagedReference // Lado gerenciador
-    private List<Avaliacao> avaliacoes = new ArrayList<>();
-	
-    @ManyToMany
-    @JoinTable(
-        name = "ProfissionalDeSaude_especializacao", // Nome da tabela intermediária
-        joinColumns = @JoinColumn(name = "ProfissionalDeSaude_id"), // FK para Profissional De Saude
-        inverseJoinColumns = @JoinColumn(name = "especializacao_id") // FK para Especializacao
-    )
-    @JsonManagedReference // Lado gerenciador
-    private List<Especializacao> especializacoes = new ArrayList<>();
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "localizacao", referencedColumnName = "id") // localização é referenciado
+	@JsonManagedReference // Lado gerenciador
+	private Localizacao localizacao;
+
+	@OneToMany(mappedBy = "ProfissionalDeSaude", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonManagedReference // Lado gerenciador
+	private List<Avaliacao> avaliacoes = new ArrayList<>();
+
+	@ManyToMany
+	@JoinTable(name = "ProfissionalDeSaude_especializacao", // Nome da tabela intermediária
+			joinColumns = @JoinColumn(name = "ProfissionalDeSaude_id"), // FK para Profissional De Saude
+			inverseJoinColumns = @JoinColumn(name = "especializacao_id") // FK para Especializacao
+	)
+	@JsonManagedReference // Lado gerenciador
+	private List<Especializacao> especializacoes = new ArrayList<>();
 
 }
