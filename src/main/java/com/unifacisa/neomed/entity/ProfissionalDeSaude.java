@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class ProfissionalDeSaude extends Usuario {
+public abstract class ProfissionalDeSaude extends Usuario {
 
 	private double valorConsulta;
 

@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class Administrador extends Usuario {
-
-	 @Column(length = 50)
+	
+	@Column(length = 50)
 	private String cargo;
 
 }
