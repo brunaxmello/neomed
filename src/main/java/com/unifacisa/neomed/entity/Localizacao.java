@@ -29,9 +29,11 @@ public class Localizacao {
 
 	@Column(length = 50)
 	private String estado;
+	
+	@Column(length = 50)
+	private String cep;
 
 	@OneToOne(mappedBy = "localizacao")
 	@JsonBackReference
-
-	private ProfissionalDeSaude profissionalDeSaude; 
+	private Usuario usuario; 
 }

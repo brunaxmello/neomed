@@ -26,11 +26,6 @@ public abstract class ProfissionalDeSaude extends Usuario {
 
 	private double valorConsulta;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "localizacao", referencedColumnName = "id") // localização é referenciado
-	@JsonManagedReference // Lado gerenciador
-	private Localizacao localizacao;
-
 	@OneToMany(mappedBy = "profissionalDeSaude", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JsonManagedReference // Lado gerenciador
 	private List<Avaliacao> avaliacoes = new ArrayList<>();
