@@ -17,7 +17,7 @@ import com.unifacisa.neomed.entity.Localizacao;
 import com.unifacisa.neomed.service.LocalizacaoService;
 
 @RestController
-@RequestMapping("localizacoes")
+@RequestMapping("/localizacoes")
 public class LocalizacaoController {
 	
 	@Autowired
