@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.unifacisa.neomed.entity.Usuario;
 import com.unifacisa.neomed.service.UsuarioService;
@@ -22,5 +24,11 @@ public class UsuarioController {
 	public ResponseEntity<Usuario> criarUsuario(@RequestBody Usuario usuario) {
 		Usuario novoUsuario = usuarioService.salvar(usuario);//
 		return ResponseEntity.status(HttpStatus.CREATED).body(novoUsuario);
+	}
+
+	@PatchMapping("/{id}")
+	public ResponseEntity<Usuario> atualizarParcialmente(@PathVariable Long id, @RequestBody Usuario dadosAtualizacao) {
+		Usuario usuarioAtualizado = usuarioService.atualizarParcialmente(id, dadosAtualizacao);
+		return ResponseEntity.ok(usuarioAtualizado);
 	}
 }

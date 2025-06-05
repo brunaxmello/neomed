@@ -29,4 +29,16 @@ public class MedicoService {
 		return medicoRepository.save(medico);
 	}
 
+	public Medico buscarPorId(Long id) {
+		return medicoRepository.findById(id)
+			.orElseThrow(() -> new RuntimeException("Médico não encontrado"));
+	}
+
+	public void deletar(Long id) {
+		if (!medicoRepository.existsById(id)) {
+			throw new RuntimeException("Médico não encontrado");
+		}
+		medicoRepository.deleteById(id);
+	}
+
 }

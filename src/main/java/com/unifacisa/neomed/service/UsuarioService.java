@@ -16,4 +16,25 @@ public class UsuarioService {
 		return usuarioRepository.save(usuario);
 	}
 
+	public Usuario atualizarParcialmente(Long id, Usuario dadosAtualizacao) {
+		Usuario usuario = buscarPorId(id);
+		
+		if (dadosAtualizacao.getNome() != null) {
+			usuario.setNome(dadosAtualizacao.getNome());
+		}
+		if (dadosAtualizacao.getEmail() != null) {
+			usuario.setEmail(dadosAtualizacao.getEmail());
+		}
+		if (dadosAtualizacao.getSenha() != null) {
+			usuario.setSenha(dadosAtualizacao.getSenha());
+		}
+		
+		return usuarioRepository.save(usuario);
+	}
+
+	public Usuario buscarPorId(Long id) {
+		return usuarioRepository.findById(id)
+			.orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+	}
+
 }
