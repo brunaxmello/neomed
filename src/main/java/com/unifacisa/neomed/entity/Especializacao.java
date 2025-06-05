@@ -30,7 +30,7 @@ public class Especializacao {
 	private String nome;
 
 	@ManyToMany(mappedBy = "especializacoes")
-	@JsonBackReference
+	@JsonBackReference("profissional-especializacoes") // mesmo nome usado em ProfissionalDeSaude
 	private List<ProfissionalDeSaude> profissionalDeSaude;
 
 }

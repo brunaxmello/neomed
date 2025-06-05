@@ -4,10 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
@@ -18,16 +22,20 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
-
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
+@Inheritance(strategy = InheritanceType.JOINED)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "tipo")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Medico.class, name = "medico")
+})
 public abstract class ProfissionalDeSaude extends Usuario {
 
 	private double valorConsulta;
 
 	@OneToMany(mappedBy = "profissionalDeSaude", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JsonManagedReference // Lado gerenciador
+	@JsonManagedReference("profissional-avaliacoes") // mesmo nome do backreference // Lado gerenciador
 	private List<Avaliacao> avaliacoes = new ArrayList<>();
 
 	@ManyToMany
@@ -35,7 +43,7 @@ public abstract class ProfissionalDeSaude extends Usuario {
 			joinColumns = @JoinColumn(name = "ProfissionalDeSaude_id"), // FK para Profissional De Saude
 			inverseJoinColumns = @JoinColumn(name = "especializacao_id") // FK para Especializacao
 	)
-	@JsonManagedReference // Lado gerenciador
+	@JsonManagedReference("profissional-especializacoes") // Lado gerenciador
 	private List<Especializacao> especializacoes = new ArrayList<>();
 
 }

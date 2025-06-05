@@ -28,12 +28,12 @@ public class Avaliacao {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "usuario_id") // Chave estrangeira no banco de dados
-	@JsonBackReference // Lado inverso
-	private Usuario usuario;;
-
+	@JsonBackReference("usuario-avaliacoes") // Lado inverso
+	private Usuario usuario;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "profissional_de_saude_id") // Chave estrangeira no banco de dados
-	@JsonBackReference // Lado inverso
+	@JsonBackReference("profissional-avaliacoes") // Lado inverso
 	private ProfissionalDeSaude profissionalDeSaude;
 
 }

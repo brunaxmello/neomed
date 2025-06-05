@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.unifacisa.neomed.entity.Medico;
@@ -28,17 +29,23 @@ public class MedicoController {
 	public List<Medico> lisarTodos() {
 		return medicoService.listarTodos();
 	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Medico> buscarPorId(@PathVariable Long id) {
+		Medico medico = medicoService.buscarPorId(id);
+		return ResponseEntity.ok(medico);
+	}
+	
+	@PostMapping(consumes = "application/json")
+    public ResponseEntity<Medico> criar(@RequestBody Medico medico) {
+        Medico novoMedico = medicoService.salvar(medico);
+        return ResponseEntity.status(HttpStatus.CREATED).body(novoMedico);
+    }
 
 	@PatchMapping("/{id}")
 	public ResponseEntity<Medico> atualizarParcialmente(@PathVariable Long id, @RequestBody Medico dadosAtualizacao) {
 		Medico medicoAtualizado = medicoService.atualizarParcialmenteMedico(id, dadosAtualizacao);
 		return ResponseEntity.ok(medicoAtualizado);
-	}
-
-	@GetMapping("/{id}")
-	public ResponseEntity<Medico> buscarPorId(@PathVariable Long id) {
-		Medico medico = medicoService.buscarPorId(id);
-		return ResponseEntity.ok(medico);
 	}
 
 	@DeleteMapping("/{id}")
@@ -47,9 +54,4 @@ public class MedicoController {
 		return ResponseEntity.noContent().build();
 	}
 	
-	@PostMapping
-    public ResponseEntity<Medico> criar(@RequestBody Medico medico) {
-        Medico novoMedico = medicoService.salvar(medico);
-        return ResponseEntity.status(HttpStatus.CREATED).body(novoMedico);
-    }
 }

@@ -1,5 +1,8 @@
 package com.unifacisa.neomed.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
@@ -11,12 +14,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-
 @Data
 @NoArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -37,6 +40,10 @@ public class Usuario {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "localizacao", referencedColumnName = "id") // localização é referenciado
-	@JsonManagedReference // Lado gerenciador
+	@JsonManagedReference("usuario-localizacao") // Lado gerenciador
 	private Localizacao localizacao;
+	
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+	@JsonManagedReference("usuario-avaliacoes")
+	private List<Avaliacao> avaliacoes = new ArrayList<>();
 }

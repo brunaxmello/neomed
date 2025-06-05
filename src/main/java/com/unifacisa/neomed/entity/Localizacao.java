@@ -13,7 +13,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
-
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode
@@ -34,6 +33,6 @@ public class Localizacao {
 	private String cep;
 
 	@OneToOne(mappedBy = "localizacao")
-	@JsonBackReference
+	@JsonBackReference("usuario-localizacao") // mesmo nome usado em Usuario
 	private Usuario usuario; 
 }
