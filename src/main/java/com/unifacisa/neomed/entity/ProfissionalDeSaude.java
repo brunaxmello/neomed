@@ -6,8 +6,11 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.unifacisa.neomed.util.ProfissionalDeSaudeDeserializer;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Inheritance;
@@ -26,11 +29,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Inheritance(strategy = InheritanceType.JOINED)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "tipo")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NONE, include = JsonTypeInfo.As.PROPERTY, property = "tipo")
 @JsonSubTypes({
         @JsonSubTypes.Type(value = Medico.class, name = "medico")
+        // Adicione outras subclasses de ProfissionalDeSaude aqui, se houver
 })
 public abstract class ProfissionalDeSaude extends Usuario {
+	
+	@Column(length = 50)
+    private String tipo;
 
 	private double valorConsulta;
 
