@@ -11,9 +11,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Entity
-public class Medico extends ProfissionalDeSaude {
+public class Medico extends Usuario {
 
 	@Column(unique = true)
 	private Integer crm;
+	
+	private Double valorConsulta;
 
 }
