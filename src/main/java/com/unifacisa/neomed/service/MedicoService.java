@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import com.unifacisa.neomed.entity.Medico;
 import com.unifacisa.neomed.repository.MedicoRepository;
@@ -41,4 +40,7 @@ public class MedicoService {
 		medicoRepository.deleteById(id);
 	}
 
+	public Medico salvar(Medico medico) {
+        return medicoRepository.save(medico);
+    }
 }

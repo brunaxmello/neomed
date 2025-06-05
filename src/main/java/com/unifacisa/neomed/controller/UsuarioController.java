@@ -3,12 +3,13 @@ package com.unifacisa.neomed.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import com.unifacisa.neomed.entity.Usuario;
 import com.unifacisa.neomed.service.UsuarioService;
@@ -31,4 +32,10 @@ public class UsuarioController {
 		Usuario usuarioAtualizado = usuarioService.atualizarParcialmente(id, dadosAtualizacao);
 		return ResponseEntity.ok(usuarioAtualizado);
 	}
+	
+	@GetMapping("/{id}")
+    public ResponseEntity<Usuario> buscarPorId(@PathVariable Long id) {
+        Usuario usuario = usuarioService.buscarPorId(id);
+        return ResponseEntity.ok(usuario);
+    }
 }
