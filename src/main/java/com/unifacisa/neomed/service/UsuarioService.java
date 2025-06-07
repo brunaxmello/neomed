@@ -1,10 +1,12 @@
 package com.unifacisa.neomed.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.unifacisa.neomed.entity.Usuario;
 import com.unifacisa.neomed.repository.UsuarioRepository;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class UsuarioService {
@@ -34,7 +36,12 @@ public class UsuarioService {
 
 	public Usuario buscarPorId(Long id) {
 		return usuarioRepository.findById(id)
-			.orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não encontrado"));
+	}
+
+	public void deletar(Long id) {
+		Usuario usuario = buscarPorId(id);
+		usuarioRepository.delete(usuario);
 	}
 
 }
